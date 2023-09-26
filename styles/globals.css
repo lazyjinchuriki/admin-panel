@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+    font-family: 'Montserrat', sans-serif;
+    box-sizing: border-box;
+}
+input, textarea, select{
+    @apply border-2 border-blue-400 rounded-md py-3 px-4 w-full text-gray-700 leading-tight focus:outline-none focus:bg-white focus:border-blue-600 focus:shadow-lg;
+    @apply mb-2;
+}
+label{
+    @apply text-blue-900 font-semibold mb-1 block;
+}
+
+h1{
+    @apply text-blue-900 font-semibold mb-4 text-4xl;
+}
+img {
+    max-height: 100%;
+}
+
+/* ::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+  background-color: rgba(46, 46, 46, 0.1);
+  border-radius: 10px;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #202020;
+  border-radius: 10px;
+} */
