@@ -1,9 +1,10 @@
+import HomeStats from "@/components/HomeStats";
 import Layout from "@/components/Layout";
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signOut } from "next-auth/react";
 import Image from "next/image";
 
 export default function Home() {
-  const { data: session, status } = useSession();
+  const { data: session } = useSession();
   return (
     <Layout>
       <div className="flex justify-between items-center">
@@ -27,6 +28,7 @@ export default function Home() {
           </button>
         </div>
       </div>
+      <HomeStats />
     </Layout>
   );
 }

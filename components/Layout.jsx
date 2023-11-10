@@ -1,4 +1,4 @@
-import { useSession, signIn, signOut } from "next-auth/react";
+import { useSession, signIn } from "next-auth/react";
 import Nav from "./Nav";
 import { useState } from "react";
 import Logo from "./Logo";
@@ -8,14 +8,30 @@ export default function Layout({ children }) {
   const { data: session } = useSession();
   if (!session) {
     return (
-      <div className={"bg-highlight w-screen h-screen flex items-center"}>
+      <div className={"bg-highlight w-screen h-screen flex items-center "}>
         <div className={"text-center w-full "}>
+          <h1>Only Authorized Users Can Login.</h1>
+          <p>
+            If you wish to be an Authorized user, please contact `
+            <b>
+              <a href="mailto: rahulkhushalani@proton.me">
+                rahulkhushalani@proton.me
+              </a>
+            </b>
+            `
+          </p>
+          <br />
           <button
             className={
-              "bg-white p-4 rounded-xl font-bold text-lg hover:scale-105 transition-all"
+              "bg-white p-4 rounded-xl font-extrabold text-lg hover:scale-105 transition-all"
             }
             onClick={() => signIn("google")}
           >
+            <img
+              src="https://freesvg.org/img/1534129544.png"
+              alt="googleIcon"
+              className="w-8 h-8 inline-block mr-2"
+            />
             Login with Google
           </button>
         </div>
@@ -45,9 +61,9 @@ export default function Layout({ children }) {
           <Logo />
         </div>
       </div>
-      <div className={" flex"}>
+      <div className={"flex"}>
         <Nav show={showNav} />
-        <div className="flex-grow p-4 w-full ">{children}</div>
+        <div className="flex-grow p-4">{children}</div>
       </div>
     </div>
   );

@@ -21,7 +21,7 @@ img {
     max-height: 100%;
 }
 
-/* ::-webkit-scrollbar {
+::-webkit-scrollbar {
   width: 10px;
   height: 10px;
   background-color: rgba(46, 46, 46, 0.1);
@@ -30,4 +30,4 @@ img {
 ::-webkit-scrollbar-thumb {
   background-color: #202020;
   border-radius: 10px;
-} */
+}
