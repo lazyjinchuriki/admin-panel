@@ -1,4 +1,5 @@
 import clientPromise from "@/lib/mongodb";
+import { Admin } from "@/models/Admin";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import NextAuth, { getServerSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
@@ -20,7 +21,7 @@ export const authOptions = {
   adapter: MongoDBAdapter(clientPromise),
   callbacks: {
     session: ({ session, token, user }) => {
-      if (adminEmails.includes(session?.user?.email)) {
+      if (isAdminEmail(session?.user?.email)) {
         return session;
       } else {
         return null;
