@@ -116,8 +116,8 @@ function AdminsPage({ swal }) {
           {isLoading && (
             <tr>
               <td colSpan={2}>
-                <div className="py-4">
-                  <Spinner fullWidth={true} />
+                <div className="flex justify-center items-center ">
+                  <Spinner />
                 </div>
               </td>
             </tr>
