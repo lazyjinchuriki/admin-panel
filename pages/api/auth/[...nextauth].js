@@ -3,10 +3,10 @@ import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import NextAuth, { getServerSession } from "next-auth";
 import GoogleProvider from "next-auth/providers/google";
 
-const adminEmails = [
-  "rahul.khushalani17@gmail.com",
-  "khushalanirahul54321@gmail.com",
-];
+async function isAdminEmail(email) {
+  mongooseConnect();
+  return !!(await Admin.findOne({ email }));
+}
 
 export const authOptions = {
   providers: [
@@ -31,13 +31,11 @@ export const authOptions = {
 
 export default NextAuth(authOptions);
 
-export async function isAdimn(req, res) {
+export async function isAdmin(req, res) {
   const session = await getServerSession(req, res, authOptions);
-  if (session?.user?.email) {
-    return adminEmails.includes(session.user.email);
-  } else {
+  if (!(await isAdminEmail(session?.user?.email))) {
     res.status(401);
     res.end();
-    throw "Unauthorized";
+    throw "Not an ADMIN";
   }
 }
