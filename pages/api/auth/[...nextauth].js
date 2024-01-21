@@ -1,4 +1,5 @@
 import clientPromise from "@/lib/mongodb";
+import { mongooseConnect } from "@/lib/mongoose";
 import { Admin } from "@/models/Admin";
 import { MongoDBAdapter } from "@auth/mongodb-adapter";
 import NextAuth, { getServerSession } from "next-auth";
@@ -32,7 +33,7 @@ export const authOptions = {
 
 export default NextAuth(authOptions);
 
-export async function isAdmin(req, res) {
+export async function isAdimn(req, res) {
   const session = await getServerSession(req, res, authOptions);
   if (!(await isAdminEmail(session?.user?.email))) {
     res.status(401);
